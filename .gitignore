@@ -1,3 +1,5 @@
 _site
 **/.DS_Store
 .DS_Store
+# 治理三件套：本仓已公开，goal/status/todo 只在本地（见 CLAUDE.md）
+context/

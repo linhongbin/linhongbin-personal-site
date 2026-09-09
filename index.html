@@ -6,6 +6,7 @@ layout: null
 <head>
 <meta charset="utf-8">
 <title>Hongbin (Ben) Lin</title>
+<meta name="description" content="{{ site.description | strip_newlines | strip }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -165,6 +166,83 @@ h2 {
   margin-right: 18px;
 }
 
+/* ---------- WRITING ---------- */
+
+.writing-item {
+  display: block;
+  padding: 20px 0;
+  border-top: 1px solid var(--border-light);
+}
+
+.writing-item:last-of-type {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.writing-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.writing-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 2px 0 4px;
+}
+
+.writing-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.writing-more {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ---------- COLLABORATORS ---------- */
+
+.collab-intro {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin-bottom: 32px;
+}
+
+.collab-item {
+  max-width: 720px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border-light);
+}
+
+.collab-item:last-of-type {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.collab-item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.collab-item-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.collab-contact {
+  max-width: 720px;
+  margin-top: 28px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  overflow-wrap: break-word;
+}
+
+.collab-contact a {
+  font-weight: 500;
+}
+
 /* ---------- FOOTER ---------- */
 
 footer {
@@ -206,16 +284,17 @@ footer {
     <div>
       <h1>Hello, I’m Hongbin (Ben) Lin</h1>
       <div class="subtitle">
-        I am a robotics engineer who is passionate about building robots.
-        My believe is that robots will make our lives better.
+        I work on force control and contact-rich manipulation: tasks where contact,
+        not vision, decides whether the robot succeeds.
 
         <br>
        
         I am working at a Chinese embodied-AI startup as a Robotics Manipulation Engineer.
 Previously, I obtained my PhD degree from The Chinese University of Hong Kong, supervised by <a href="https://biomedirobotics.com/au-kwok-wai-samuel/">Prof. Kwok Wai Samuel Au</a>.
-My research focuses on world models, RL, surgical autonomy, and robot dynamics modeling.
+My background is in world models, reinforcement learning, surgical autonomy, and robot dynamics modeling; my current focus is force control and embodied VLA policies for contact-rich manipulation.
       </div>
       <div class="links">
+        {%- comment %} 博客随 3 张照片一起上线后恢复 {%- endcomment %}
         <a href="{{ '/pdf/ben_cv.pdf' | relative_url }}">CV</a>
         <a href="https://www.linkedin.com/in/hongbin-ben-lin-aa2253170/">LinkedIn</a>
         <a href="https://github.com/linhongbin">GitHub</a>
@@ -223,6 +302,63 @@ My research focuses on world models, RL, surgical autonomy, and robot dynamics m
         <a href="mailto:hongbinlin@link.cuhk.edu.hk">Email</a>
       </div>
     </div>
+  </div>
+</section>
+
+{% comment %} 博客尚未上线（缺 3 张照片）——上线后删掉这对 comment 标签即可恢复
+<hr>
+
+<section class="container">
+  <h2>Writing</h2>
+
+  {% for post in site.posts limit: 3 %}
+  <a class="writing-item" href="{{ post.url | relative_url }}">
+    <div class="writing-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+    <div class="writing-title">{{ post.title }}</div>
+    {% if post.description %}<div class="writing-desc">{{ post.description }}</div>{% endif %}
+  </a>
+  {% endfor %}
+
+  <a class="writing-more" href="{{ '/blog/' | relative_url }}">All posts →</a>
+</section>
+{% endcomment %}
+
+<hr>
+
+<section class="container">
+  <h2>Looking for collaborators</h2>
+
+  <div class="collab-intro">
+    I am building an open benchmark for force-sensing contact-rich manipulation — a graded
+    corpus of industrial threaded fasteners, a force-data metrology spec, and a pre-registered
+    ablation on whether a real force sensor beats a joint-current estimate. Full rig under
+    ¥30k; data and spec CC-BY-4.0, code Apache-2.0.
+  </div>
+
+  <div class="collab-item">
+    <div class="collab-item-title">Force estimate vs. ground truth</div>
+    <div class="collab-item-desc">a pre-registered three-way ablation on whether a 6-axis
+      force/torque sensor actually beats a joint-current estimate for contact-rich policies.</div>
+  </div>
+
+  <div class="collab-item">
+    <div class="collab-item-title">A graded corpus of seized fasteners</div>
+    <div class="collab-item-desc">industrial threaded joints graded by difficulty: infinitely
+      resettable, cheap to run, and failure modes that a camera cannot see but a wrench signal
+      can.</div>
+  </div>
+
+  <div class="collab-item">
+    <div class="collab-item-title">Force-data metrology</div>
+    <div class="collab-item-desc">a spec for what makes a force dataset trustworthy: calibration
+      traceability, sampling rate, units, and provenance.</div>
+  </div>
+
+  <div class="collab-contact">
+    I would like to hear from you if you work on force or tactile policies, contact-rich
+    benchmarks, or force-data quality — or if you have access to industrial fastening or
+    disassembly data or hardware. Reach me at
+    <a href="mailto:hongbinlin@link.cuhk.edu.hk">hongbinlin@link.cuhk.edu.hk</a>.
   </div>
 </section>
 
@@ -234,15 +370,12 @@ My research focuses on world models, RL, surgical autonomy, and robot dynamics m
   <div class="pub">
     <div class="pub-media">
       <img src="{{ img }}mea.png">
-      <video autoplay muted loop playsinline>
-        <source src="{{ img }}mea.png" ">
-      </video>
     </div>
     <div>
       <div class="pub-title"> Multi-Group Equivariant Augmentation for Reinforcement Learning in Robot Manipulation
        </div>
       <div class="pub-authors">Hongbin Lin, Juan Rojas, Kwok Wai Samuel Au</div>
-      <div class="pub-venue">adXiv, 2025</div>
+      <div class="pub-venue">arXiv, 2025</div>
       <div class="pub-links">
         <a href="https://arxiv.org/abs/2508.11204">Paper</a>
       </div>
@@ -252,16 +385,13 @@ My research focuses on world models, RL, surgical autonomy, and robot dynamics m
   <div class="pub">
     <div class="pub-media">
       <img src="{{ img }}gasv2.png">
-      <video autoplay muted loop playsinline>
-        <source src="{{ img }}gasv2.png"">
-      </video>
     </div>
     <div>
       <div class="pub-title"> Visuomotor Grasping with World Models for Surgical Robots
        </div>
       <div class="pub-authors">Hongbin Lin, Bin Li, Kwok Wai Samuel Au</div>
       <div class="pub-venue">International
-        Journal of Research and Review (IJRR), 2025, (under review)</div>
+        Journal of Robotics Research (IJRR), 2025 (under review)</div>
       <div class="pub-links">
         <a href="https://arxiv.org/abs/2508.11200">Paper</a>
       </div>
@@ -279,7 +409,7 @@ My research focuses on world models, RL, surgical autonomy, and robot dynamics m
     <div>
       <div class="pub-title">World Models for General Surgical Grasping</div>
       <div class="pub-authors">Hongbin Lin, Bin Li, Chun Wai Wong, Juan Rojas, Xiangyu Chu, Kwok Wai Samuel Au</div>
-      <div class="pub-venue">Robotics Science and Systems (RSS), 2024</div>
+      <div class="pub-venue">Robotics: Science and Systems (RSS), 2024</div>
       <div class="pub-links">
         <a href="https://linhongbin.github.io/gas/">Project</a>
         <a href="https://github.com/linhongbin/gas">Code</a>
@@ -292,9 +422,6 @@ My research focuses on world models, RL, surgical autonomy, and robot dynamics m
   <div class="pub">
     <div class="pub-media">
       <img src="{{ img }}needletrack.png">
-      <video autoplay muted loop playsinline>
-        <source src="{{ img }}needletrack.png"">
-      </video>
     </div>
     <div>
       <div class="pub-title">On the Monocular 3D Pose Estimation for Arbitrary Shaped Needle in Dynamic Scenes: An Efficient Visual Learning and Geometry Modeling Approach</div>
@@ -340,7 +467,7 @@ My research focuses on world models, RL, surgical autonomy, and robot dynamics m
       <div class="pub-links">
         <a href="https://sites.google.com/view/accel-2022-cuhk">Project</a>
         <a href="https://github.com/linhongbin/accel-cuhk">Code</a>
-        <a href="https://arxiv.org/asb/2210.01406">Paper</a>
+        <a href="https://arxiv.org/abs/2210.01406">Paper</a>
       </div>
     </div>
   </div>
@@ -355,7 +482,7 @@ My research focuses on world models, RL, surgical autonomy, and robot dynamics m
     <div>
       <div class="pub-title">Learning deep nets for gravitational dynamics with unknown disturbance through physical knowledge distillation: Initial feasibility study</div>
       <div class="pub-authors">Hongbin Lin, Qian Gao, Xiangyu Chu, Qi Dou, Anton Deguet, Peter Kazanzides, K. W. Samuel Au</div>
-      <div class="pub-venue">IEEE Robotics and Automation Letters, 2021 (presented on ICRA 2021)</div>
+      <div class="pub-venue">IEEE Robotics and Automation Letters, 2021 (presented at ICRA 2021)</div>
       <div class="pub-links">
         <a href="https://biomedirobotics.com/physical-knowledge-distillation/">Project</a>
         <a href="https://github.com/linhongbin-ws/DFNN4GCC">Code</a>
@@ -374,7 +501,7 @@ My research focuses on world models, RL, surgical autonomy, and robot dynamics m
     <div>
       <div class="pub-title">A reliable gravity compensation control strategy for dVRK robotic arms with nonlinear disturbance forces</div>
       <div class="pub-authors">Hongbin Lin, C. W. Vincent Hui, Yan Wang, Anton Deguet, Peter Kazanzides, K. W. Samuel Au</div>
-      <div class="pub-venue">IEEE Robotics and Automation Letters, 2019 (presented on IROS 2019)</div>
+      <div class="pub-venue">IEEE Robotics and Automation Letters, 2019 (presented at IROS 2019)</div>
       <div class="pub-links">
         <a href="https://biomedirobotics.com/gravity-compensation-for-dvrk/">Project</a>
         <a href="https://github.com/jhu-dvrk/dvrk-gravity-compensation">Code</a>

@@ -1,0 +1,69 @@
+---
+layout: null
+permalink: /blog/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Blog — Hongbin Lin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Notes from building an open benchmark for force-sensing contact-rich robot manipulation.">
+<style>
+:root {
+  --text-main: #0f0f0f;
+  --text-secondary: #5a5a5a;
+  --border-light: #eaeaea;
+  --bg-soft: #fafafa;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+  color: var(--text-main);
+  background: #fff;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--text-main); text-decoration: none; }
+a:hover { opacity: 0.6; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+.topbar { padding: 40px 0 0; font-size: 0.9rem; }
+.topbar a { margin-right: 20px; font-weight: 500; }
+h1 { font-size: 2.2rem; font-weight: 600; letter-spacing: -0.02em; margin: 56px 0 12px; }
+.lede { color: var(--text-secondary); margin-bottom: 56px; }
+.post { padding: 24px 0; border-bottom: 1px solid var(--border-light); }
+.post:first-of-type { border-top: 1px solid var(--border-light); }
+.post-date { font-size: 0.85rem; color: var(--text-secondary); }
+.post-title { font-size: 1.15rem; font-weight: 600; margin: 4px 0 6px; }
+.post-desc { font-size: 0.98rem; color: var(--text-secondary); }
+footer { margin: 80px 0 60px; font-size: 0.85rem; color: #8a8a8a; }
+</style>
+</head>
+<body>
+
+<div class="container topbar">
+  <a href="{{ '/' | relative_url }}">Home</a>
+  <a href="{{ '/blog/' | relative_url }}">Blog</a>
+</div>
+
+<div class="container">
+  <h1>Blog</h1>
+  <div class="lede">
+    Notes from building an open benchmark for force-sensing contact-rich manipulation —
+    hardware ground truth, graded specimens, and what the numbers actually say.
+  </div>
+
+  {% for post in site.posts %}
+  <div class="post">
+    <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+    <div class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+    {% if post.description %}<div class="post-desc">{{ post.description }}</div>{% endif %}
+  </div>
+  {% endfor %}
+
+  <footer>© {{ site.time | date: "%Y" }} Hongbin Lin</footer>
+</div>
+
+</body>
+</html>

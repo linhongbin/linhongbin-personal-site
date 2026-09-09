@@ -1,37 +1,29 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# Site-wide settings for hongbinlin.com (Jekyll).
+# Values here are read in the templates as {{ site.title }}, {{ site.email }}, and so on.
+# Jekyll does *not* reload this file on `bundle exec jekyll serve`; restart the server after editing.
 
-title: Hongbin Lin  
+title: Hongbin Lin
 name: Hongbin Lin
-position: Ph.D. Student
-email: Hongbinlin@link.cuhk.edu.hk
+position: Robotics Manipulation Engineer
+email: hongbinlin@link.cuhk.edu.hk
 description: >-
-  I am a Ph.D. student at the Chinese University of Hong Kong supervised by Prof. [Kwok Wai Samuel Au](https://biomedirobotics.com/au-kwok-wai-samuel/). My research focus are reinforcement learning, surgical autonomy and robot dynamic modeling. I am interested in building pracitcal, robust, and general AI-based frameworks for robots.
+  I am a robotics manipulation engineer at a Chinese embodied-AI startup, and I hold a
+  Ph.D. from the Chinese University of Hong Kong, supervised by Prof. Kwok Wai Samuel Au.
+  My work is on force control and embodied VLA models for contact-rich manipulation, and
+  on robot learning that survives contact with real hardware.
 
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "linhongbin.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://hongbinlin.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: hongbinlin_ben
 github_username: linhongbin
 google_scholar: 9K1iBJwAAAAJ
-google_analytics: xx
+
+# No analytics provider is configured. Leaving the key unset makes
+# `site.google_analytics` nil, so an `{% if site.google_analytics %}` guard around the
+# gtag snippet will correctly skip it. Do not put a real measurement ID here until the
+# provider is decided.
+# google_analytics:
 
 # Build settings
 theme: minima
@@ -42,21 +34,18 @@ sass:
   style: compact
 
 # Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# Anything listed here is added to Jekyll's internal default list and is never copied
+# into the built site. `context/` and CLAUDE.md are working files, not site content --
+# without these entries Jekyll publishes them at hongbinlin.com/CLAUDE.md and
+# hongbinlin.com/context/status.html. Do not remove them.
+exclude:
+  - context/
+  - CLAUDE.md
+  - RUNBOOK.md           # GitHub 可读的运维说明，不渲染成站点页面
+  - .claude/
+  - README.md            # 仓库说明，不是站点页面
+  - cv.html              # 孤儿页（站上无链接指向），内容过期待重做；暂不对外
+  - images/blog/README.md # 目录说明，否则会渲染成 /images/blog/ 这个页面
+  - Gemfile
+  - Gemfile.lock
+  - vendor/

@@ -3,3 +3,5 @@ _site
 .DS_Store
 # 治理三件套：本仓已公开，goal/status/todo 只在本地（见 CLAUDE.md）
 context/
+# 本仓协作说明：只在本地，不再随公有仓公开（历史版本仍可查）
+CLAUDE.md

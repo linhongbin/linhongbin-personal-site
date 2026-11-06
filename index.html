@@ -166,6 +166,26 @@ h2 {
   margin-right: 18px;
 }
 
+/* ---------- NEWS ---------- */
+
+.news-item {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 24px;
+  max-width: 720px;
+  padding: 10px 0;
+}
+
+.news-date {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding-top: 2px;
+}
+
+.news-text {
+  font-size: 1rem;
+}
+
 /* ---------- WRITING ---------- */
 
 .writing-item {
@@ -284,17 +304,21 @@ footer {
     <div>
       <h1>Hello, I’m Hongbin (Ben) Lin</h1>
       <div class="subtitle">
-        I work on force control and contact-rich manipulation: tasks where contact,
-        not vision, decides whether the robot succeeds.
+        I build robots. I'm passionate about full-stack robot systems and cutting-edge
+        robotics research.
 
         <br>
-       
-        I am working at a Chinese embodied-AI startup as a Robotics Manipulation Engineer.
-Previously, I obtained my PhD degree from The Chinese University of Hong Kong, supervised by <a href="https://biomedirobotics.com/au-kwok-wai-samuel/">Prof. Kwok Wai Samuel Au</a>.
-My background is in world models, reinforcement learning, surgical autonomy, and robot dynamics modeling; my current focus is force control and embodied VLA policies for contact-rich manipulation.
+
+        I was a Robotics Algorithm Engineer at Knowin AI and have also worked at XDOF.
+        I received my PhD from CUHK, advised by
+        <a href="https://biomedirobotics.com/au-kwok-wai-samuel/">Prof. Kwok Wai Samuel Au</a>.
+
+        <br>
+
+        Research interests: World Models, Reinforcement Learning, Surgical Robotics, Robot Manipulation.
       </div>
       <div class="links">
-        {%- comment %} 博客随 3 张照片一起上线后恢复 {%- endcomment %}
+        {%- comment %}<a href="{{ '/blog/' | relative_url }}">Blog</a>{% endcomment %}
         <a href="{{ '/pdf/ben_cv.pdf' | relative_url }}">CV</a>
         <a href="https://www.linkedin.com/in/hongbin-ben-lin-aa2253170/">LinkedIn</a>
         <a href="https://github.com/linhongbin">GitHub</a>
@@ -305,7 +329,20 @@ My background is in world models, reinforcement learning, surgical autonomy, and
   </div>
 </section>
 
-{% comment %} 博客尚未上线（缺 3 张照片）——上线后删掉这对 comment 标签即可恢复
+<hr>
+
+<section class="container">
+  <h2>News</h2>
+
+  <div class="news-item">
+    <div class="news-date">Nov 2026</div>
+    <div class="news-text">Our paper <a href="https://arxiv.org/abs/2508.11200">Visuomotor Grasping with
+      World Models for Surgical Robots</a> has been accepted to the International Journal of
+      Robotics Research (IJRR).</div>
+  </div>
+</section>
+
+{% comment %} Writing + Looking for collaborators 暂时隐藏——删掉这对 comment 标签即可恢复
 <hr>
 
 <section class="container">
@@ -321,7 +358,6 @@ My background is in world models, reinforcement learning, surgical autonomy, and
 
   <a class="writing-more" href="{{ '/blog/' | relative_url }}">All posts →</a>
 </section>
-{% endcomment %}
 
 <hr>
 
@@ -361,6 +397,7 @@ My background is in world models, reinforcement learning, surgical autonomy, and
     <a href="mailto:hongbinlin@link.cuhk.edu.hk">hongbinlin@link.cuhk.edu.hk</a>.
   </div>
 </section>
+{% endcomment %}
 
 <hr>
 
@@ -391,7 +428,7 @@ My background is in world models, reinforcement learning, surgical autonomy, and
        </div>
       <div class="pub-authors">Hongbin Lin, Bin Li, Kwok Wai Samuel Au</div>
       <div class="pub-venue">International
-        Journal of Robotics Research (IJRR), 2025 (under review)</div>
+        Journal of Robotics Research (IJRR), 2026 (accepted)</div>
       <div class="pub-links">
         <a href="https://arxiv.org/abs/2508.11200">Paper</a>
       </div>
